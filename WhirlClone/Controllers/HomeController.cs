@@ -28,6 +28,26 @@ namespace WhirlClone.Controllers
             return View();
         }
 
+        public IActionResult Desktops()
+        {
+            return View();
+        }
+
+        public IActionResult Monitors_GPUs()
+        {
+            return View();
+        }
+
+        public IActionResult Mobile_Carriers()
+        {
+            return View();
+        }
+
+        public IActionResult Wireless_ISPs()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
