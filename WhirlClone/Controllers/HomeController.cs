@@ -48,6 +48,46 @@ namespace WhirlClone.Controllers
             return View();
         }
 
+        public IActionResult DesktopThread1()
+        {
+            return View();
+        }
+
+        public IActionResult DesktopThread2()
+        {
+            return View();
+        }
+
+        public IActionResult Mobile_CarriersThread1()
+        {
+            return View();
+        }
+
+        public IActionResult Mobile_CarriersThread2()
+        {
+            return View();
+        }
+
+        public IActionResult Monitors_GPUsThread1()
+        {
+            return View();
+        }
+
+        public IActionResult Monitors_GPUsThread2()
+        {
+            return View();
+        }
+
+        public IActionResult Wireless_ISPsThread1()
+        {
+            return View();
+        }
+
+        public IActionResult Wireless_ISPsThread2()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
