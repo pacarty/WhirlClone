@@ -88,6 +88,11 @@ namespace WhirlClone.Controllers
             return View();
         }
 
+        public IActionResult PostMessage()
+        {
+            return RedirectToAction("DesktopThread1");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
