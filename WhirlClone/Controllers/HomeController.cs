@@ -88,8 +88,11 @@ namespace WhirlClone.Controllers
             return View();
         }
 
-        public IActionResult PostMessage()
+        public IActionResult PostMessage(Message message)
         {
+            Console.WriteLine(message.Id);
+            Console.WriteLine(message.Content);
+
             return RedirectToAction("DesktopThread1");
         }
 

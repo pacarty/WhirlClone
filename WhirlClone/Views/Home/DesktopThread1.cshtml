@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Message
+
+@{
     ViewData["Title"] = "DesktopThread1";
 }
 <h1>@ViewData["Title"]</h1>
@@ -6,5 +8,6 @@
 <p>DesktopThread1 page.</p>
 
 <form asp-controller="Home" asp-action="PostMessage" method="post" class="form-horizontal">
-    <input type="text" />
+    <textarea asp-for="Content"></textarea>
+    <input type="submit" value="Post" />
 </form>
