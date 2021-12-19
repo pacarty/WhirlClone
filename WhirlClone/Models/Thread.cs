@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace WhirlClone.Models
 {
-    public class Message
+    public class Thread
     {
         public int Id { get; set; }
-        public string Content { get; set; }
-        public int ThreadId { get; set; }
+        public string Name { get; set; }
     }
 }

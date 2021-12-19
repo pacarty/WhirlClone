@@ -51,11 +51,11 @@ namespace WhirlClone.Controllers
             return View();
         }
 
-        public IActionResult DesktopThread1()
+        public IActionResult DesktopThread1(int id)
         {
             ThreadDisplay threadDisplay = new ThreadDisplay();
             threadDisplay.NewMessage = new Message();
-            threadDisplay.Messages = _context.Messages.ToList();
+            threadDisplay.Messages = _context.Messages.Where(x => x.ThreadId == id).ToList();
 
             return View(threadDisplay);
         }
@@ -97,6 +97,8 @@ namespace WhirlClone.Controllers
 
         public IActionResult PostMessage(Message message)
         {
+            // Set ThreadId to 1 for testing
+            message.ThreadId = 1;
             _context.Messages.Add(message);
             _context.SaveChanges();
 
