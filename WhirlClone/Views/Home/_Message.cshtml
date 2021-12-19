@@ -2,5 +2,6 @@
 
 <form asp-controller="Home" asp-action="PostMessage" method="post" class="form-horizontal">
     <textarea asp-for="Content"></textarea>
+    <input type="hidden" asp-for="ThreadId" />
     <input type="submit" value="Post" />
 </form>

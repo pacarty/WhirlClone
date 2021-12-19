@@ -54,7 +54,7 @@ namespace WhirlClone.Controllers
         public IActionResult DesktopThread1(int id)
         {
             ThreadDisplay threadDisplay = new ThreadDisplay();
-            threadDisplay.NewMessage = new Message();
+            threadDisplay.NewMessage = new Message { ThreadId = id };
             threadDisplay.Messages = _context.Messages.Where(x => x.ThreadId == id).ToList();
 
             return View(threadDisplay);
@@ -97,12 +97,10 @@ namespace WhirlClone.Controllers
 
         public IActionResult PostMessage(Message message)
         {
-            // Set ThreadId to 1 for testing
-            message.ThreadId = 1;
             _context.Messages.Add(message);
             _context.SaveChanges();
 
-            return RedirectToAction("DesktopThread1");
+            return RedirectToAction("DesktopThread1", new { id = message.ThreadId });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
