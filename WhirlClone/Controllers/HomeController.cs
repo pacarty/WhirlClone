@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using WhirlClone.Data;
 using WhirlClone.Models;
 
 namespace WhirlClone.Controllers
@@ -12,10 +13,12 @@ namespace WhirlClone.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private DataContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, DataContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -50,7 +53,11 @@ namespace WhirlClone.Controllers
 
         public IActionResult DesktopThread1()
         {
-            return View();
+            ThreadDisplay threadDisplay = new ThreadDisplay();
+            threadDisplay.NewMessage = new Message();
+            threadDisplay.Messages = _context.Messages.ToList();
+
+            return View(threadDisplay);
         }
 
         public IActionResult DesktopThread2()
@@ -90,8 +97,8 @@ namespace WhirlClone.Controllers
 
         public IActionResult PostMessage(Message message)
         {
-            Console.WriteLine(message.Id);
-            Console.WriteLine(message.Content);
+            _context.Messages.Add(message);
+            _context.SaveChanges();
 
             return RedirectToAction("DesktopThread1");
         }

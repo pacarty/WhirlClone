@@ -1,4 +1,4 @@
-﻿@model Message
+﻿@model ThreadDisplay
 
 @{
     ViewData["Title"] = "DesktopThread1";
@@ -7,7 +7,13 @@
 
 <p>DesktopThread1 page.</p>
 
-<form asp-controller="Home" asp-action="PostMessage" method="post" class="form-horizontal">
-    <textarea asp-for="Content"></textarea>
-    <input type="submit" value="Post" />
-</form>
+<ul>
+    @foreach (var message in Model.Messages)
+     {
+        <li>@message.Id, @message.Content</li>
+     }
+</ul>
+
+<div>
+    @Html.Partial("_Message", Model.NewMessage)
+</div>
