@@ -103,6 +103,30 @@ namespace WhirlClone.Controllers
             return RedirectToAction("DesktopThread1", new { id = message.ThreadId });
         }
 
+        public IActionResult Thread(int id)
+        {
+            ThreadDisplay threadDisplay = new ThreadDisplay();
+
+            threadDisplay.NewMessage = new Message { ThreadId = id };
+            threadDisplay.Messages = _context.Messages.Where(x => x.ThreadId == id).ToList();  
+            threadDisplay.Thread = _context.Threads.FirstOrDefault(x => x.Id == id);
+
+            return View(threadDisplay);
+        }
+
+        public IActionResult CreateThread()
+        {
+            return View();
+        }
+
+        public IActionResult PostThread(Thread thread)
+        {
+            _context.Threads.Add(thread);
+            _context.SaveChanges();
+
+            return RedirectToAction("CreateThread");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

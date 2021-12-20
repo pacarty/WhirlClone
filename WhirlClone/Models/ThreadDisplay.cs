@@ -7,6 +7,7 @@ namespace WhirlClone.Models
 {
     public class ThreadDisplay
     {
+        public Thread Thread { get; set; }
         public Message NewMessage { get; set; }
         public List<Message> Messages { get; set; }
     }

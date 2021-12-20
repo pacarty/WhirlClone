@@ -1,0 +1,13 @@
+﻿@model Thread
+
+@{
+    ViewData["Title"] = "Create Thread";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Thread creation page.</p>
+
+<form asp-controller="Home" asp-action="PostThread" method="post" class="form-horizontal">
+    <textarea asp-for="Name"></textarea>
+    <input type="submit" value="Post" />
+</form>

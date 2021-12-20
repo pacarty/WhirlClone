@@ -1,0 +1,19 @@
+﻿@model ThreadDisplay
+
+@{
+    ViewData["Title"] = Model.Thread.Name;
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>@Model.Thread.Name page.</p>
+
+<ul>
+    @foreach (var message in Model.Messages)
+     {
+        <li>@message.Id, @message.Content</li>
+     }
+</ul>
+
+<div>
+    @Html.Partial("_Message", Model.NewMessage)
+</div>
