@@ -33,7 +33,13 @@ namespace WhirlClone.Controllers
 
         public IActionResult Desktops()
         {
-            return View();
+            TopicDisplay topicDisplay = new TopicDisplay();
+
+            // TODO: Change topicId == 1 to equal the id passed into this function as an argument
+            // like in the Thread(int id) action.
+            topicDisplay.Threads = _context.Threads.Where(x => x.TopicId == 1).ToList();
+
+            return View(topicDisplay);
         }
 
         public IActionResult Monitors_GPUs()
@@ -121,6 +127,9 @@ namespace WhirlClone.Controllers
 
         public IActionResult PostThread(Thread thread)
         {
+            //TODO: Change so this isn't hardcoded. This is just a test value for now.
+            thread.TopicId = 1;
+
             _context.Threads.Add(thread);
             _context.SaveChanges();
 
