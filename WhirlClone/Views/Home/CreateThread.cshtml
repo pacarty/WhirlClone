@@ -8,6 +8,7 @@
 <p>Thread creation page.</p>
 
 <form asp-controller="Home" asp-action="PostThread" method="post" class="form-horizontal">
-    <textarea asp-for="Name"></textarea>
+    Name: <textarea asp-for="Name"></textarea>
+    TopicId: <textarea asp-for="TopicId"></textarea>
     <input type="submit" value="Post" />
 </form>

@@ -1,0 +1,13 @@
+﻿@model Subforum
+
+@{
+    ViewData["Title"] = "Create Subforum";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Subforum creation page.</p>
+
+<form asp-controller="Home" asp-action="PostSubforum" method="post" class="form-horizontal">
+    <textarea asp-for="Name"></textarea>
+    <input type="submit" value="Post" />
+</form>

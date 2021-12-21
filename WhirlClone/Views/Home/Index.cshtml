@@ -1,14 +1,26 @@
-﻿@{
+﻿@model HomeDisplay
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h3>Computers</h3>
-    <p><a asp-area="" asp-controller="Home" asp-action="Desktops">Desktops</a></p>
-    <p><a asp-area="" asp-controller="Home" asp-action="Monitors_GPUs">Monitors/GPUs</a></p>
 
-    <h3>Mobile</h3>
-    <p><a asp-area="" asp-controller="Home" asp-action="Mobile_Carriers">Mobile Carriers</a></p>
-    <p><a asp-area="" asp-controller="Home" asp-action="Wireless_ISPs">Wireless ISPs</a></p>
 
-</div>
+@if (Model.Subforums.Any())
+{
+    @foreach (var subforum in Model.Subforums)
+    {
+        <h2>Subforum: @subforum.Id, @subforum.Name</h2>
+
+        <ul>
+            @foreach (var topic in Model.Topics.Where(x => x.SubforumId == subforum.Id))
+            {
+                <li><a asp-controller="Home" asp-action="Topic" asp-route-id="@topic.Id">@topic.Name</a></li>
+            }
+        </ul>
+    }
+}
+else
+{
+    <p>No subforums to display.</p>
+}

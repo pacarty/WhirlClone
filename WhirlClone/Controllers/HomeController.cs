@@ -23,7 +23,11 @@ namespace WhirlClone.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            HomeDisplay homeDisplay = new HomeDisplay();
+            homeDisplay.Subforums = _context.Subforums.ToList();
+            homeDisplay.Topics = _context.Topics.ToList();
+
+            return View(homeDisplay);
         }
 
         public IActionResult Privacy()
@@ -127,9 +131,6 @@ namespace WhirlClone.Controllers
 
         public IActionResult PostThread(Thread thread)
         {
-            //TODO: Change so this isn't hardcoded. This is just a test value for now.
-            thread.TopicId = 1;
-
             _context.Threads.Add(thread);
             _context.SaveChanges();
 
@@ -153,13 +154,23 @@ namespace WhirlClone.Controllers
 
         public IActionResult PostTopic(Topic topic)
         {
-            //TODO: Change so this isn't hardcoded. This is just a test value for now.
-            topic.SubforumId = 1;
-
             _context.Topics.Add(topic);
             _context.SaveChanges();
 
             return RedirectToAction("CreateTopic");
+        }
+
+        public IActionResult CreateSubforum()
+        {
+            return View();
+        }
+
+        public IActionResult PostSubforum(Subforum subforum)
+        {
+            _context.Subforums.Add(subforum);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -18,5 +18,6 @@ namespace WhirlClone.Data
         public DbSet<Message> Messages { get; set; }
         public DbSet<Thread> Threads { get; set; }
         public DbSet<Topic> Topics { get; set; }
+        public DbSet<Subforum> Subforums { get; set; }
     }
 }
