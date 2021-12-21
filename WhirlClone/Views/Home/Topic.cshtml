@@ -1,0 +1,15 @@
+﻿@model TopicDisplay
+
+@{
+    ViewData["Title"] = Model.Topic.Name;
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>@Model.Topic.Name page.</p>
+
+<ul>
+    @foreach (var thread in Model.Threads)
+    {
+        <li><a asp-controller="Home" asp-action="Thread" asp-route-id="@thread.Id">@thread.Name</a></li>
+    }
+</ul>

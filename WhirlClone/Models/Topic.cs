@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 
 namespace WhirlClone.Models
 {
-    public class TopicDisplay
+    public class Topic
     {
-        public Topic Topic { get; set; }
-        public List<Thread> Threads { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int SubforumId { get; set; }
     }
 }

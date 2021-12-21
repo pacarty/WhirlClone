@@ -136,6 +136,32 @@ namespace WhirlClone.Controllers
             return RedirectToAction("CreateThread");
         }
 
+        public IActionResult Topic(int id)
+        {
+            TopicDisplay topicDisplay = new TopicDisplay();
+
+            topicDisplay.Threads = _context.Threads.Where(x => x.TopicId == id).ToList();
+            topicDisplay.Topic = _context.Topics.FirstOrDefault(x => x.Id == id);
+
+            return View(topicDisplay);
+        }
+
+        public IActionResult CreateTopic()
+        {
+            return View();
+        }
+
+        public IActionResult PostTopic(Topic topic)
+        {
+            //TODO: Change so this isn't hardcoded. This is just a test value for now.
+            topic.SubforumId = 1;
+
+            _context.Topics.Add(topic);
+            _context.SaveChanges();
+
+            return RedirectToAction("CreateTopic");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

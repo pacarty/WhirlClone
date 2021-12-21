@@ -1,0 +1,13 @@
+﻿@model Topic
+
+@{
+    ViewData["Title"] = "Create Topic";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Topic creation page.</p>
+
+<form asp-controller="Home" asp-action="PostTopic" method="post" class="form-horizontal">
+    <textarea asp-for="Name"></textarea>
+    <input type="submit" value="Post" />
+</form>
