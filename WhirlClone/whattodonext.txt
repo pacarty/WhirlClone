@@ -1,0 +1,4 @@
+Remove all random files like Mobile_Carriers.cshtml, actions associated with that, so that everything is fully dynamic.
+
+Make it so that create new thread is in topic page and creates it in that topic. do the same (similar thing) with the other creation pages.
+
